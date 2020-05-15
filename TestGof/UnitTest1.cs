@@ -10,6 +10,8 @@ using Patrones.Facade;
 using Patrones.Proxy;
 using Patrones.Composite;
 using Patrones.Decorator;
+using Patrones.FlyWeight;
+using Patrones.Builder;
 
 namespace TestGof
 {
@@ -21,7 +23,7 @@ namespace TestGof
         }
 
         [Test]
-        public void Test1()
+        public void AbstractFactoryLaberinto()
         {
             FabricaDeLaberintosEncantados fabricaDeLaberintosEncantados = new FabricaDeLaberintosEncantados();
             JuegoDelLaberinto juego = new JuegoDelLaberinto();
@@ -31,6 +33,21 @@ namespace TestGof
             string mensaje = laberinto.Habitaciones[0].Entrar();
 
             Assert.AreEqual(" Habitacion Encantada :1", mensaje);
+        }
+
+
+        [Test]
+        public void BuilderLaberinto()
+        {
+            Laberinto laberinto;
+            JuegoDelLaberinto juegoDelLaberinto = new JuegoDelLaberinto();
+            ConstructorLaberintoenEle constructor = new ConstructorLaberintoenEle();
+
+            laberinto = juegoDelLaberinto.CrearLaberinto(constructor);
+
+            Assert.AreEqual("Laberinto en Ele", constructor.ObtenerNombre());
+
+            
         }
 
 
@@ -175,6 +192,24 @@ namespace TestGof
             
 
         }
+
+
+        [Test]
+        public void SliderFlyWeight()
+        {
+            SliderFactory factory = new SliderFactory();
+
+            Slider character = factory.GetSlider('B');
+            
+            string mensaje = character.Display(1);
+
+            Assert.AreEqual("Slider #1: Bacon Master - topped with American cheese and lots of bacon! $" + 2.39m, mensaje);
+
+
+        }
+
+
+
 
 
 

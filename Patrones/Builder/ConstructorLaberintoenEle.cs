@@ -52,5 +52,10 @@ namespace Patrones.Builder
             ConstruirLaberinto();
             return laberinto;
         }
+
+        public override string ObtenerNombre()
+        {
+            return "Laberinto en Ele";
+        }
     }
 }

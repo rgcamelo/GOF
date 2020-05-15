@@ -13,5 +13,7 @@ namespace Patrones.Builder
 
         public abstract Laberinto ObtenerLaberinto();
 
+        public abstract string ObtenerNombre();
+
     }
 }
